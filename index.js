@@ -8,4 +8,23 @@ function omnitool(array, callback) {
   return arr;
 }
 
-module.exports = { omnitool };
+function flat(arr, depth, count= 0, array= []){
+  
+
+    if (count >= depth) {
+      return array.concat(arr);
+    }
+
+  if (Array.isArray(arr[0])){
+    array = array.concat(arr[0]);
+    count++;
+    arr= arr.slice(1);
+    return flat(arr, depth, count, array);
+  }
+  if (!Array.isArray(arr[0])){
+    array.push(arr[0]);
+    arr= arr.slice(1);
+    return flat(arr, depth, count, array);
+  }
+}
+module.exports = { omnitool, flat };
