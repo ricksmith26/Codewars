@@ -14,6 +14,9 @@ function flat(arr, depth, count= 0, array= []){
     if (count >= depth) {
       return array.concat(arr);
     }
+    if (count < 0) {
+      return array;
+    }
 
   if (Array.isArray(arr[0])){
     array = array.concat(arr[0]);
